@@ -9,7 +9,6 @@ func insertionSort(arr []int) []int {
 		for j := i; j > 0 && arr[j-1] > arr[j]; j-- {
 			arr[j-1], arr[j] = arr[j], arr[j-1]
 		}
-		fmt.Println(arr)
 	}
 
 	return arr
