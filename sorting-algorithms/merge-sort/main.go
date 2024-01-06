@@ -11,9 +11,10 @@ func merge(arr1, arr2 []int) []int {
 		if arr1[i] < arr2[j] {
 			result = append(result, arr1[i])
 			i++
+		} else {
+			result = append(result, arr2[j])
+			j++
 		}
-		result = append(result, arr2[j])
-		j++
 	}
 
 	for i < len(arr1) {
@@ -29,6 +30,19 @@ func merge(arr1, arr2 []int) []int {
 	return result
 }
 
+func mergeSort(arr []int) []int {
+	if len(arr) <= 1 {
+		return arr
+	}
+	mid := len(arr) / 2
+	left := mergeSort(arr[:mid])
+	right := mergeSort(arr[mid:])
+
+	return merge(left, right)
+}
+
 func main() {
-	fmt.Println(merge([]int{2, 4, 6}, []int{1, 3, 5}))
+	fmt.Println(merge([]int{1, 4, 10}, []int{3, 8, 9}))
+
+	fmt.Println(mergeSort([]int{3, 5, 2, 7, 9}))
 }
